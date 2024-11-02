@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\web development\\.net\\web projects\\UserIdentity\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F2766300-71E8-4778-B26E-A1EA9A978380}|UserIdentity\\UserIdentity.csproj|e:\\web development\\.net\\web projects\\useridentity\\useridentity\\scaffoldingreadme.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{F2766300-71E8-4778-B26E-A1EA9A978380}|UserIdentity\\UserIdentity.csproj|solutionrelative:useridentity\\scaffoldingreadme.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2766300-71E8-4778-B26E-A1EA9A978380}|UserIdentity\\UserIdentity.csproj|e:\\web development\\.net\\web projects\\useridentity\\useridentity\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2766300-71E8-4778-B26E-A1EA9A978380}|UserIdentity\\UserIdentity.csproj|solutionrelative:useridentity\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ScaffoldingReadMe.txt",
+              "DocumentMoniker": "E:\\web development\\.net\\web projects\\UserIdentity\\UserIdentity\\ScaffoldingReadMe.txt",
+              "RelativeDocumentMoniker": "UserIdentity\\ScaffoldingReadMe.txt",
+              "ToolTip": "E:\\web development\\.net\\web projects\\UserIdentity\\UserIdentity\\ScaffoldingReadMe.txt",
+              "RelativeToolTip": "UserIdentity\\ScaffoldingReadMe.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-10-30T11:43:31.546Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "E:\\web development\\.net\\web projects\\UserIdentity\\UserIdentity\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "UserIdentity\\Controllers\\HomeController.cs",
+              "ToolTip": "E:\\web development\\.net\\web projects\\UserIdentity\\UserIdentity\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "UserIdentity\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAuwA0AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T11:32:52.651Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+@model RoleUserFormModel
+<form asp-action="DeleteRoleFromUser" method="post">
+    
+    <input type="text" asp-for="UserId" hidden value="@Model.UserId"/> 
+    <select id="options" asp-for="Role" class="form-select mb-2">
+
+    @foreach(var select in Model.Roles) {
+            <option>@select</option>
+    }
+        </select>
+    <button class="btn btn-danger">Delete</button>
+</form>
