@@ -91,9 +91,15 @@ public class UserController : Controller {
         }
         else if (model.Roles.Where(r=>r.IsSelected).Count() == 0)    {
             ModelState.AddModelError("Roles", "You must select at least one role");
+            return View(model);
+        }
+        else if (await _userManager.FindByNameAsync(model.UserName) != null) {
+            ModelState.AddModelError("UserName", $"Username '{model.UserName}' is already taken. ");
+            return View(model);
         }
         else if (await _userManager.FindByEmailAsync(model.Email) != null) {
             ModelState.AddModelError("Email", "The email exists already");
+            return View(model);
         }
 
         var user = new ApplicationUser() {
