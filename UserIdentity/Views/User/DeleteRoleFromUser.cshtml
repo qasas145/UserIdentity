@@ -2,11 +2,12 @@
 <form asp-action="DeleteRoleFromUser" method="post">
     
     <input type="text" asp-for="UserId" hidden value="@Model.UserId"/> 
-    <select id="options" asp-for="Role" class="form-select mb-2">
-
-    @foreach(var select in Model.Roles) {
-            <option>@select</option>
+    @for(int i=0;i<Model.Roles.Count();i++) {
+        <input hidden asp-for="@Model.Roles[i].Name" value="@Model.Roles[i].Name"/>
+        <input asp-for="@Model.Roles[i].IsSelected" type="checkbox" />
+        <label class="form-check-label" asp-for = "Roles[i].IsSelected">@Model.Roles[i].Name</label>
+        <hr />
+        
     }
-        </select>
     <button class="btn btn-danger">Delete</button>
 </form>
