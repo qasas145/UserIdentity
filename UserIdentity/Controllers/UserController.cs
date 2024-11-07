@@ -124,4 +124,52 @@ public class UserController : Controller {
         }
         return RedirectToAction(nameof(Index));
     }
+    // let's make views to manage the admin to edit other users , 
+    public async Task<IActionResult> EditUser(string userId) {
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user is not ApplicationUser) {
+            return NotFound();
+        }
+        
+        var userData = new EditUserFormViewModel() {
+            UserId = user.Id,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            Email = user.Email,
+            UserName = user.UserName,
+        };
+
+        return View(userData);
+    }
+    [HttpPost]
+    // [ValidateAntiForgeryToken] look how to use it , 
+    public async Task<IActionResult> EditUser(EditUserFormViewModel model) {
+        if (!ModelState.IsValid) {
+            return View(model);
+        }
+        // check about the email 
+
+        var userWithSameEmail = await _userManager.FindByEmailAsync(model.Email);
+
+        if (userWithSameEmail != null && userWithSameEmail.Id  != model.UserId) {
+            ModelState.AddModelError("Email", $"The email {model.Email} already exists ");
+            return View(model);
+        }
+
+        // check about the username 
+        var userWithSameUserName = await _userManager.FindByNameAsync(model.UserName);
+
+        if (userWithSameUserName != null && userWithSameUserName.Id  != model.UserId) {
+            ModelState.AddModelError("UserName", $"The username {model.UserName} already exists ");
+            return View(model);
+        }
+
+        userWithSameEmail.FirstName = model.FirstName;
+        userWithSameEmail.LastName = model.LastName;
+        userWithSameEmail.Email = model.Email;
+        userWithSameEmail.UserName =model.UserName;
+        await _userManager.UpdateAsync(userWithSameEmail);
+
+        return Redirect(nameof(Index));
+    }
 }
