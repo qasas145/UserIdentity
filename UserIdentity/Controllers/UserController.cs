@@ -34,17 +34,17 @@ public class UserController : Controller {
         var userRoles = await _userManager.GetRolesAsync(user);
         var roles = await _roleManager.Roles.ToListAsync();
 
-        var filteredRoles = roles.Where(r=>!userRoles.Contains(r.Name)).Select(r=>new RoleFormModel(){
+        var filteredRoles = roles.Where(r=>!userRoles.Contains(r.Name)).Select(r=>new RoleFormViewModel(){
             Name = r.Name,
             IsSelected = false
         }).ToList();
 
-        var model = new RoleUserFormModel(){Roles = filteredRoles, UserId = userId};
+        var model = new RoleUserFormViewModel(){Roles = filteredRoles, UserId = userId};
         
         return View(model);
     }
     [HttpPost]
-    public async Task<IActionResult> AddRoleToUser(RoleUserFormModel model) {
+    public async Task<IActionResult> AddRoleToUser(RoleUserFormViewModel model) {
 
         var user = await _userManager.FindByIdAsync(model.UserId.ToString());
         var selectedRoles = model.Roles.Where(r=>r.IsSelected).Select(r=>r.Name);
@@ -61,7 +61,7 @@ public class UserController : Controller {
         var user = await _userManager.FindByIdAsync(userId);
         var userRoles = await _userManager.GetRolesAsync(user);
 
-        var model = new RoleUserFormModel(){Roles = userRoles.Select(r=>new RoleFormModel(){
+        var model = new RoleUserFormViewModel(){Roles = userRoles.Select(r=>new RoleFormViewModel(){
             Name = r,
             IsSelected = false
         }).ToList(), UserId = userId};
@@ -69,7 +69,7 @@ public class UserController : Controller {
         return View(model);
     }
     [HttpPost]
-    public async Task<IActionResult> DeleteRoleFromUser(RoleUserFormModel model) {
+    public async Task<IActionResult> DeleteRoleFromUser(RoleUserFormViewModel model) {
         
         var user = await _userManager.FindByIdAsync(model.UserId);
         await _userManager.RemoveFromRolesAsync(user, model.Roles.Where(r=>r.IsSelected).Select(r=>r.Name));
@@ -77,14 +77,14 @@ public class UserController : Controller {
         return RedirectToAction(nameof(Index));
     }
     public async Task<IActionResult> AddUser() {
-        var roles = await _roleManager.Roles.Select(r=>new RoleFormModel(){IsSelected = false,Name = r.Name}).ToListAsync();
-        var newUser = new AddUserFormModel() {
+        var roles = await _roleManager.Roles.Select(r=>new RoleFormViewModel(){IsSelected = false,Name = r.Name}).ToListAsync();
+        var newUser = new AddUserFormViewModel() {
             Roles = roles
         };
         return View(newUser);
     }
     [HttpPost]
-    public async Task<IActionResult> AddUser(AddUserFormModel model) {
+    public async Task<IActionResult> AddUser(AddUserFormViewModel model) {
         
         if (!ModelState.IsValid) {
             return View(model);

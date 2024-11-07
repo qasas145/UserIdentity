@@ -20,13 +20,13 @@ public class RolesController : Controller {
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AddRole(RoleFormModel roleFormModel) {
+    public async Task<IActionResult> AddRole(RoleFormViewModel RoleFormViewModel) {
 
         if (!ModelState.IsValid) {
             return View("Index",await _roleManager.Roles.ToListAsync());
         }
 
-        var roleExist = await _roleManager.RoleExistsAsync(roleFormModel.Name);
+        var roleExist = await _roleManager.RoleExistsAsync(RoleFormViewModel.Name);
 
         if (roleExist){
 
@@ -35,7 +35,7 @@ public class RolesController : Controller {
         }
         else {
 
-            await _roleManager.CreateAsync(new IdentityRole(roleFormModel.Name.Trim()));
+            await _roleManager.CreateAsync(new IdentityRole(RoleFormViewModel.Name.Trim()));
             return RedirectToAction(nameof(Index));
         }
 

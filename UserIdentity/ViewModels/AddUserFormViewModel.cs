@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-public class AddUserFormModel {
+public class AddUserFormViewModel {
     
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -41,5 +41,5 @@ public class AddUserFormModel {
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
-            public List<RoleFormModel> Roles{get;set;}
+            public List<RoleFormViewModel> Roles{get;set;}
 }
