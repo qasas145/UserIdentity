@@ -24,8 +24,38 @@
                 <a class="btn btn-primary m-2" asp-controller="User" asp-action="AddRoleToUser" asp-route-userId="@user.Id">Add Role</a>
                 <a class="btn btn-danger m-2" asp-controller="User" asp-action="DeleteRoleFromUser" asp-route-userId="@user.Id">Delete Role</a>
                 <a class="btn btn-outline-primary m-2" asp-controller="User" asp-action="EditUser" asp-route-userId="@user.Id">Edit</a>
+
+                @* the btn related to deleting user ,  *@
+                <a class="btn btn-danger deleteUserBtn"  data-id = "@user.Id">Delete</a>
               </td>
         </tr>
     }
   </tbody>
-</table>    
+</table> 
+
+@section Scripts{
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+  $(document).ready(function() {
+        $(".deleteUserBtn").click(function() {
+          var btn = $(this);
+          var userId = btn.data("id");
+
+          
+        $.ajax({
+            url: '/api/user/?userId='+userId, 
+            type: "DELETE",
+            success: function(response) {
+                alert("The operation has done successfully");
+                btn.parents("tr").fadeOut();
+            },
+            error: function() {
+              alert("error has happened");
+            }
+        });
+        });
+    });
+
+  </script>
+} 
